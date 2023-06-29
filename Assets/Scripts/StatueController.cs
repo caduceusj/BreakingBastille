@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,7 +11,7 @@ public class StatueController : MonoBehaviour
 
     public GameObject text = null;
 
-    public bool inArea = false;
+    public bool inArea = false, animIsPlaying = false;
 
     [SerializeField]
     private Collider collision;
@@ -42,27 +43,23 @@ public class StatueController : MonoBehaviour
             text.SetActive(false);
         }
     }
-    void Start()
-    {
-
-
-
-
-
-    }
-
     // Update is called once per frame
     void Update()
     {
-        if(inArea) { 
+
+
+        
+
+        if (inArea) { 
         }
-        if (inArea && Input.GetKeyDown(KeyCode.F))
+        if (inArea && Input.GetKeyDown(KeyCode.F) && animIsPlaying == false)
         {
             Debug.Log("F Entrou");
+            animPlayer.SetInteger("Position", position + 1);
             position++;
-
-            if (position > 3)
+            if (animPlayer.GetInteger("Position") > 3)
             {
+                animPlayer.SetInteger("Position", 1);
                 position = 1;
             }
             // Play the specific animation
@@ -70,16 +67,18 @@ public class StatueController : MonoBehaviour
             {
                 if (position == 1)
                 {
-                    animPlayer.Play("3-1");
+                    animPlayer.SetInteger("Position", 1);
                 }
 
                 if (position == 2)
                 {
-                    animPlayer.Play("1-2");
+                    animPlayer.SetInteger("Position", 2);
+
                 }
                 if (position == 3)
                 {
-                    animPlayer.Play("2-3");
+                    animPlayer.SetInteger("Position", 3);
+
                 }
             }
         }
