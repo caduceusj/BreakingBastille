@@ -8,6 +8,7 @@ using UnityEngine.UIElements;
 public class StatueController : MonoBehaviour
 {
     public Animator animPlayer;
+    public int id;
 
     public GameObject text = null;
 
@@ -18,6 +19,7 @@ public class StatueController : MonoBehaviour
 
     [SerializeField]
     private int position = 2;
+    
 
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
