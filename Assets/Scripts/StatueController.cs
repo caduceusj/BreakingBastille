@@ -17,7 +17,7 @@ public class StatueController : MonoBehaviour
     private Collider collision;
 
     [SerializeField]
-    private int position = 2;
+    public int position { get; private set; } = 2;
 
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
