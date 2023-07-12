@@ -1,0 +1,117 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class PlayerCombatController : MonoBehaviour
+{
+    private InputStarterAssets input;
+    private InputStarterAssets.PlayerActions player;
+
+    [Header("Attacking")]
+    [SerializeField] private float attackDistance = 3f;
+    [SerializeField] private float attackDelay = 0.4f;
+    [SerializeField] private float attackSpeed = 1f;
+    [SerializeField] private int attackDamage = 1;
+    [SerializeField] private LayerMask attackLayer;
+
+    [SerializeField] private GameObject hitEffect;
+    [SerializeField] private AudioClip swordSwing;
+    [SerializeField] private AudioClip hitSound;
+
+    bool attacking = false;
+    bool readyToAttack = true;
+    int attackCount;
+
+    [Header("Camera")]
+    [SerializeField] private Camera cam;
+
+    private Animator animator;
+    
+    // Start is called before the first frame update
+    void Awake()
+    {
+        input = new InputStarterAssets();
+        player = input.Player;
+
+        AssignInputs();
+    }
+
+    private void Start()
+    {
+        animator = GetComponentInChildren<Animator>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (input.Player.Attack.IsPressed())
+        {
+
+        }
+    }
+
+    private void OnEnable()
+    {
+        player.Enable();
+    }
+
+    private void OnDisable()
+    {
+        player.Disable();
+    }
+
+    void AssignInputs()
+    {
+        /*input.Jump.performed += ctx => Jump();*/
+        player.Attack.started += ctx => Attack();
+    }
+
+    public void Attack()
+    {
+        print("Attacked!");
+        animator.SetTrigger("isAttacking");
+
+        if (!readyToAttack || attacking) return;
+
+        readyToAttack = false;
+        attacking = true;
+
+        Invoke(nameof(ResetAttack), attackSpeed);
+        Invoke(nameof(AttackRaycast), attackDelay);
+
+        if (attackCount == 0)
+        {
+            // ChangeAnimationState(ATTACK1);
+            attackCount++;
+        }
+        else
+        {
+            // ChangeAnimationState(ATTACK2);
+            attackCount = 0;
+        }
+    }
+
+    void ResetAttack()
+    {
+        attacking = false;
+        readyToAttack = true;
+    }
+
+    void AttackRaycast()
+    {
+        Debug.DrawRay(cam.transform.position, cam.transform.forward * attackDistance, Color.green, 10f);
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance, attackLayer))
+        {
+            HitTarget(hit.point);
+
+            // if (hit.transform.TryGetComponent<Actor>(out Actor T)) { T.TakeDamage(attackDamage); }
+        }
+    }
+
+    void HitTarget(Vector3 pos)
+    {
+        GameObject GO = Instantiate(hitEffect, pos, Quaternion.identity);
+        Destroy(GO, 20);
+    }
+}

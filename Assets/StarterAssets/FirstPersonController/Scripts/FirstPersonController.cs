@@ -60,8 +60,9 @@ namespace StarterAssets
 		private float _verticalVelocity;
 		private float _terminalVelocity = 53.0f;
 
-		// timeout deltatime
-		private float _jumpTimeoutDelta;
+
+        // timeout deltatime
+        private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
 	
@@ -71,8 +72,9 @@ namespace StarterAssets
 		private CharacterController _controller;
 		private StarterAssetsInputs _input;
 		private GameObject _mainCamera;
+        private Animator _animator;
 
-		private const float _threshold = 0.01f;
+        private const float _threshold = 0.01f;
 
 		private bool IsCurrentDeviceMouse
 		{
@@ -99,8 +101,9 @@ namespace StarterAssets
 		{
 			_controller = GetComponent<CharacterController>();
 			_input = GetComponent<StarterAssetsInputs>();
+            _animator = GetComponentInChildren<Animator>();
 #if ENABLE_INPUT_SYSTEM
-			_playerInput = GetComponent<PlayerInput>();
+            _playerInput = GetComponent<PlayerInput>();
 #else
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
@@ -154,16 +157,30 @@ namespace StarterAssets
 		private void Move()
 		{
 			// set target speed based on move speed, sprint speed and if sprint is pressed
-			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+			float targetSpeed;
+			if(_input.sprint)
+			{
+				targetSpeed = SprintSpeed;
+				_animator.SetFloat("speed", 1, 0.2f, Time.deltaTime);
+            }
+			else
+			{
+                targetSpeed = MoveSpeed;
+				_animator.SetFloat("speed", 0.5f, 0.2f, Time.deltaTime);
+            }
 
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
 			// note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
 			// if there is no input, set the target speed to 0
-			if (_input.move == Vector2.zero) targetSpeed = 0.0f;
+			if (_input.move == Vector2.zero)
+			{
+				targetSpeed = 0.0f;
+                _animator.SetFloat("speed", 0, 0.2f, Time.deltaTime);
+            }
 
-			// a reference to the players current horizontal velocity
-			float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
+            // a reference to the players current horizontal velocity
+            float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
 			float speedOffset = 0.1f;
 			float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
