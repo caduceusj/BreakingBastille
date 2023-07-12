@@ -23,11 +23,11 @@ public class StatueController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        Debug.Log("AAAAAAAAAAAA");
+        //Debug.Log("AAAAAAAAAAAA");
         if (other.CompareTag("Player"))
         {
             inArea = true;
-            Debug.Log("AAAAAAAAAAAA");
+            //Debug.Log("AAAAAAAAAAAA");
             text.SetActive(true);
 
 

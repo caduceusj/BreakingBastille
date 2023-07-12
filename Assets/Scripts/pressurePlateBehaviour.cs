@@ -18,15 +18,13 @@ public class pressurePlateBehaviour : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log("Colisão detectada");
+    
         if (other.gameObject.CompareTag("Player") && block == false) {
             transform.parent = transform;
             trigger = true;
-            
-            Debug.Log("Eu entrei aqui");
         }
     }
-    private void OnCollisionStay(Collision other)
+    /*private void OnCollisionStay(Collision other)
     {
         if (other.gameObject.CompareTag("Player") && block == false)
         {
@@ -41,12 +39,12 @@ public class pressurePlateBehaviour : MonoBehaviour
             moveBack = true;
             other.transform.parent = null;
         }
-    }
+    }*/
 
     // Update is called once per frame
     void Update()
     {
-        if (moveBack)
+        /*if (moveBack)
         {
             if(transform.position.y < originalPos.y)
             {
@@ -56,12 +54,11 @@ public class pressurePlateBehaviour : MonoBehaviour
             {
                 moveBack = false;
             }
-        }
+        }*/
         if(trigger)
         {
             if (levelController.checkStatues())
             {
-                Debug.Log("Deu Certo a sequência");
                 block = true;
                 trigger = false;
             }
