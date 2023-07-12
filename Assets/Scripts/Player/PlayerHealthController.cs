@@ -1,15 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealthController : MonoBehaviour
 {
+   
     public PlayerHealthController Instance { get; private set; }
 
     [field: Header("Health")]
     [field: SerializeField] public int MaxHealthPoints {get; private set;}
     [field: SerializeField] public int HealthPoints { get; private set; }
     [SerializeField] private int HealSpeed = 1;
+    [SerializeField] private Image m_Image;
+    [SerializeField] private GameObject HealthBar;
+
+
 
     [Header("Cooldown")]
     [SerializeField] private float RegenCoooldown = 4f;
@@ -22,6 +28,7 @@ public class PlayerHealthController : MonoBehaviour
     private WaitForSeconds RegenCooldownDelay;
     private Coroutine SetRegenCoroutine;
 
+    
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -38,6 +45,8 @@ public class PlayerHealthController : MonoBehaviour
 
     private void Start()
     {
+        m_Image = HealthBar.GetComponent<Image>();
+
         HealDelay = new WaitForSeconds(0.5f);
         RegenCooldownDelay = new WaitForSeconds(RegenCoooldown);
 
@@ -45,14 +54,19 @@ public class PlayerHealthController : MonoBehaviour
         HealthPoints = 20;
 
         StartCoroutine(HealthLogic());
-        ReceiveDamage(20);
+        //ReceiveDamage(20);
+
+        Vector3 healthScale = m_Image.rectTransform.localScale;
+        healthScale.x = (float)HealthPoints / MaxHealthPoints;
+        m_Image.rectTransform.localScale = healthScale;
+
     }
 
     private void Update()
     {
         if (hit == true)
         {
-            ReceiveDamage(20);
+            ReceiveDamage(4);
             hit = false;
         }
     }
@@ -97,6 +111,11 @@ public class PlayerHealthController : MonoBehaviour
 
         if(SetRegenCoroutine != null) StopCoroutine("SetRegenCooldown");
         SetRegenCoroutine = StartCoroutine("SetRegenCooldown");
+
+        
+        //Vector3 healthScale = m_Image.rectTransform.localScale;
+        //healthScale.x = (float)HealthPoints / MaxHealthPoints;
+        //m_Image.rectTransform.localScale = healthScale;
 
     }
 }
