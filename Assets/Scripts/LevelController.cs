@@ -62,8 +62,7 @@ public class LevelController : MonoBehaviour
         statues.AddRange(GameObject.FindGameObjectsWithTag("statue"));        
         statuePatternSpawner = GameObject.FindGameObjectWithTag("statuePatternSpawner");
         lockedDoor = GameObject.FindGameObjectWithTag("lockedDoor");
-
-        Debug.Log("Pattern Spawners total:");
+        
         for (int i = 0; i < statuePatternSpawner.transform.childCount; i++)
         {
             patternsSpawners.Add(statuePatternSpawner.transform.GetChild(i).gameObject);
