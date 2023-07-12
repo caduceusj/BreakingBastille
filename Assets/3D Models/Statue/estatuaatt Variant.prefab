@@ -4384,6 +4384,7 @@ MonoBehaviour:
   animPlayer: {fileID: 6055794286966130679}
   text: {fileID: 4049955274252674656}
   inArea: 0
+  animIsPlaying: 0
   collision: {fileID: 5009946853167440453}
   position: 1
 --- !u!65 &5009946853167440453
