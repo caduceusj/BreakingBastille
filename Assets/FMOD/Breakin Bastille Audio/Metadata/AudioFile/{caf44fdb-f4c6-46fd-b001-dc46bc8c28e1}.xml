@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{caf44fdb-f4c6-46fd-b001-dc46bc8c28e1}">
+		<property name="assetPath">
+			<value>Fase1audios/Estátua/Estátua 4.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3.9859183673469389</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{8cf49041-ea8c-4487-8eb2-18a0fb4aad39}</destination>
+		</relationship>
+	</object>
+</objects>
