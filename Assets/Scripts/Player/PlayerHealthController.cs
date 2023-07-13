@@ -88,7 +88,7 @@ public class PlayerHealthController : MonoBehaviour
 
     public float GetHealthPercentage()
     {
-        return HealthPoints * 100 / MaxHealthPoints;
+        return (float)HealthPoints / MaxHealthPoints;
     }
 
     public void ReceiveDamage(int damage)

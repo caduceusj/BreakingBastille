@@ -35,14 +35,15 @@ public class PlayerCombatController : MonoBehaviour
         input = new InputStarterAssets();
         player = input.Player;
         AssignInputs();
-
-        attackDamage = 1;
-        // canAttack = true;
     }
 
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
+        animator.SetBool("canAttack", false);
+        
+        attackDamage = 1;
+        canAttack = false;
     }
 
     // Update is called once per frame

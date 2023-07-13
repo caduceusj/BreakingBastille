@@ -26,6 +26,7 @@ public class EnemyController : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         anim = gameObject.GetComponent<Animator>();
+        anim.SetBool("canAttack", true);
 
         currentHealth = maxHealth;
     }
