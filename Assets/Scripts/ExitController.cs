@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ExitController : MonoBehaviour
 {
@@ -8,8 +9,7 @@ public class ExitController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            print("VENCEU!");
-            // TODO GAME OVER
+            SceneManager.LoadScene("GameWin");
         }
     }
 }

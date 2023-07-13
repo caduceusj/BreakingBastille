@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ExitPrisonController : MonoBehaviour
 {
@@ -8,7 +9,9 @@ public class ExitPrisonController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            print("FUGIU!!");
+            SceneManager.LoadScene("2_Courtyard");
         }
     }
+
+
 }

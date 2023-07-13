@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealthController : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class PlayerHealthController : MonoBehaviour
         {
             Instance = this;
         }
-        DontDestroyOnLoad(gameObject);
+        // DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -99,10 +100,10 @@ public class PlayerHealthController : MonoBehaviour
 
         if(HealthPoints <= 0)
         {
-            // todo game over
+            SceneManager.LoadScene("Game Over");
         }
 
-        if(SetRegenCoroutine != null) StopCoroutine("SetRegenCooldown");
+        if (SetRegenCoroutine != null) StopCoroutine("SetRegenCooldown");
         SetRegenCoroutine = StartCoroutine("SetRegenCooldown");
 
     }
