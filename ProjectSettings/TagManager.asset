@@ -8,9 +8,7 @@ TagManager:
   - CinemachineTarget
   - Player Sword
   - Enemy
-  - CinemachineTarget
   - lockedDoor
-  - statue
   - statuePattern
   - statuePatternSpawner
   layers:
