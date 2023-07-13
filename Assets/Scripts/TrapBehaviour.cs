@@ -5,6 +5,9 @@ using UnityEngine;
 public class TrapBehaviour : MonoBehaviour
 {
     [SerializeField] private GameObject projectile,firePoint;
+    [SerializeField] private bool vertical;
+    [SerializeField] private float velocity;
+    [SerializeField] private int damage;
     private GameObject newProjectile;
     private ProjectileController projectileController;
     // Start is called before the first frame update
@@ -23,10 +26,10 @@ public class TrapBehaviour : MonoBehaviour
         newProjectile = Instantiate(projectile,firePoint.transform.position,firePoint.transform.rotation);
         projectileController = newProjectile.GetComponent<ProjectileController>();
 
-        newProjectile.GetComponent<Rigidbody>().velocity = new Vector3(1f, 0f,0f) * 10f;
-        projectileController.isFromEnemy = false;
-        projectileController.damage = 1;
-        
-      
+        projectileController.moving = true;
+        projectileController.isFromEnemy = true;
+        projectileController.damage = damage;
+        projectileController.velocity = Mathf.Abs(velocity);
+        projectileController.vertical = vertical;        
     }
 }
