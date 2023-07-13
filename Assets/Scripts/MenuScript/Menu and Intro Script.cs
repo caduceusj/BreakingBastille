@@ -22,7 +22,7 @@ public class MenuandIntroScript : MonoBehaviour
         continueButton.onClick.AddListener(changeSceneAndText);
         continueButton.interactable = false;
         startGameButton.onClick.AddListener(playButtonClicked);
-        exitGameButton.onClick.AddListener (playButtonClicked);
+        exitGameButton.onClick.AddListener (ExitGame);
         
     }
 
