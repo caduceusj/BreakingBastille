@@ -11,6 +11,7 @@ TagManager:
   - lockedDoor
   - statuePattern
   - statuePatternSpawner
+  - EnemyWeapon
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - 
   - Ground
   - 
-  - 
+  - Player
   - 
   - 
   - 

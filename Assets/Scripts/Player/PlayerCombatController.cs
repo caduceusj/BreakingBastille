@@ -105,7 +105,7 @@ public class PlayerCombatController : MonoBehaviour
             print("Attacked!");
             // HitTarget(hit.point);
 
-            if (hit.transform.TryGetComponent<Enemie>(out Enemie T)) { 
+            if (hit.transform.TryGetComponent<EnemyController>(out EnemyController T)) { 
 
                 T.TakeDamage(attackDamage); 
             }

@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 5540846699157827664}
   - component: {fileID: 8268927445466215194}
   - component: {fileID: 2447917064510381815}
+  - component: {fileID: 450024143962513945}
   m_Layer: 8
   m_Name: Capsule
   m_TagString: Player
@@ -202,6 +203,24 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &450024143962513945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5735108977435639729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 470447692f514c44c971a94268a5af53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MaxHealthPoints>k__BackingField: 20
+  <HealthPoints>k__BackingField: 20
+  HealSpeed: 1
+  RegenCoooldown: 4
+  IsRegenInCooldown: 0
+  hit: 0
 --- !u!1 &5760401390933283079
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,9 +268,8 @@ GameObject:
   - component: {fileID: 7712037120614550329}
   - component: {fileID: 6236168415928459749}
   - component: {fileID: 5829433383059841116}
-  - component: {fileID: 3127587062364437281}
   - component: {fileID: 6831309157998320037}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +291,7 @@ Transform:
   - {fileID: 2418031975917943444}
   - {fileID: 7688084925366184468}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -5.9, z: 0}
 --- !u!143 &4881328833714881697
 CharacterController:
@@ -465,24 +483,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &3127587062364437281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6462617959016915566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 470447692f514c44c971a94268a5af53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <MaxHealthPoints>k__BackingField: 0
-  <HealthPoints>k__BackingField: 0
-  HealSpeed: 1
-  RegenCoooldown: 4
-  IsRegenInCooldown: 0
-  hit: 0
 --- !u!114 &6831309157998320037
 MonoBehaviour:
   m_ObjectHideFlags: 0
