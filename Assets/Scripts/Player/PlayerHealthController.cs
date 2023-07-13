@@ -97,6 +97,11 @@ public class PlayerHealthController : MonoBehaviour
 
         HealthPoints -= damage;
 
+        if(HealthPoints <= 0)
+        {
+            // todo game over
+        }
+
         if(SetRegenCoroutine != null) StopCoroutine("SetRegenCooldown");
         SetRegenCoroutine = StartCoroutine("SetRegenCooldown");
 

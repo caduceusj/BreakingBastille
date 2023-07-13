@@ -12,6 +12,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private LayerMask playerLayer;
 
+    public float FollowRange = 5;
+
     private Renderer render;
     private NavMeshAgent agent;
     private Animator anim;
@@ -29,6 +31,7 @@ public class EnemyController : MonoBehaviour
         anim.SetBool("canAttack", true);
 
         currentHealth = maxHealth;
+        FollowRange = 5;
     }
 
     private void Start()
@@ -57,11 +60,11 @@ public class EnemyController : MonoBehaviour
         Gizmos.color = transparentGreen;
 
         // when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
-        Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y, transform.position.z), 5);
+        Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y, transform.position.z), FollowRange);
     }
     private void trackPlayer()
     {
-        bool playerInRange = Physics.CheckSphere(transform.position, 5, playerLayer, QueryTriggerInteraction.Ignore);
+        bool playerInRange = Physics.CheckSphere(transform.position, FollowRange, playerLayer, QueryTriggerInteraction.Ignore);
 
         if(playerInRange)
         {

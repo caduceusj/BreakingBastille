@@ -811,6 +811,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 4096
+  FollowRange: 8
 --- !u!195 &9070429717367380201
 NavMeshAgent:
   m_ObjectHideFlags: 0
