@@ -7,6 +7,7 @@ public class TrapBehaviour : MonoBehaviour
     [SerializeField] private GameObject projectile,firePoint;
     [SerializeField] private bool vertical;
     [SerializeField] private float velocity;
+    [SerializeField] private int damage;
     private GameObject newProjectile;
     private ProjectileController projectileController;
     // Start is called before the first frame update
@@ -27,7 +28,7 @@ public class TrapBehaviour : MonoBehaviour
 
         projectileController.moving = true;
         projectileController.isFromEnemy = true;
-        projectileController.damage = 1;
+        projectileController.damage = damage;
         projectileController.velocity = Mathf.Abs(velocity);
         projectileController.vertical = vertical;        
     }

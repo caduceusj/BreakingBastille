@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a20a2f2530be76f43b128af2ec3a037a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a20a2f2530be76f43b128af2ec3a037a,
         type: 3}
@@ -150,7 +150,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -174,3 +174,4 @@ MonoBehaviour:
   damage: 0
   direction: 0
   velocity: 0
+  Target: {fileID: 0}
