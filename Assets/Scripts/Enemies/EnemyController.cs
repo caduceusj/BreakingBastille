@@ -31,7 +31,6 @@ public class EnemyController : MonoBehaviour
         anim.SetBool("canAttack", true);
 
         currentHealth = maxHealth;
-        FollowRange = 5;
     }
 
     private void Start()

@@ -42,7 +42,6 @@ public class PlayerCombatController : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         animator.SetBool("canAttack", false);
         
-        attackDamage = 1;
         canAttack = false;
     }
 

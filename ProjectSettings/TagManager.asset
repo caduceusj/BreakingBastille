@@ -12,6 +12,7 @@ TagManager:
   - statuePattern
   - statuePatternSpawner
   - EnemyWeapon
+  - Exit
   layers:
   - Default
   - TransparentFX

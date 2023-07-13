@@ -173,7 +173,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 68f025470a69bc243b6ed7396eeec2f8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 29.69
+      value: 14.63
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 68f025470a69bc243b6ed7396eeec2f8,
         type: 3}
@@ -811,7 +811,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 4096
-  FollowRange: 8
+  FollowRange: 10
 --- !u!195 &9070429717367380201
 NavMeshAgent:
   m_ObjectHideFlags: 0
