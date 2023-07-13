@@ -69,15 +69,14 @@ public class PlayerCombatController : MonoBehaviour
 
     public void Attack()
     {
-        print("Attacked!");
-        animator.SetTrigger("isAttacking");
-
         if (!readyToAttack || attacking) return;
 
         readyToAttack = false;
         attacking = true;
 
         Invoke(nameof(ResetAttack), attackSpeed);
+        
+        animator.SetTrigger("isAttacking");
         Invoke(nameof(AttackRaycast), attackDelay);
 
         if (attackCount == 0)
@@ -103,9 +102,13 @@ public class PlayerCombatController : MonoBehaviour
         Debug.DrawRay(cam.transform.position, cam.transform.forward * attackDistance, Color.green, 10f);
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance, attackLayer))
         {
-            HitTarget(hit.point);
+            print("Attacked!");
+            // HitTarget(hit.point);
 
-            // if (hit.transform.TryGetComponent<Actor>(out Actor T)) { T.TakeDamage(attackDamage); }
+            if (hit.transform.TryGetComponent<Enemie>(out Enemie T)) { 
+
+                T.TakeDamage(attackDamage); 
+            }
         }
     }
 
