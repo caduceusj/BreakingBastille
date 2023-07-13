@@ -8,6 +8,11 @@ TagManager:
   - CinemachineTarget
   - Player Sword
   - Enemy
+  - CinemachineTarget
+  - lockedDoor
+  - statue
+  - statuePattern
+  - statuePatternSpawner
   layers:
   - Default
   - TransparentFX
@@ -19,7 +24,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Ground
   - 
   - 
   - 
