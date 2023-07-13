@@ -28,7 +28,6 @@ public class EnemyController : MonoBehaviour
         anim = gameObject.GetComponent<Animator>();
 
         currentHealth = maxHealth;
-        canAttack = true;
     }
 
     private void Start()

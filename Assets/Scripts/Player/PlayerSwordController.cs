@@ -13,8 +13,9 @@ public class PlayerSwordController : MonoBehaviour
         {
             if (other.CompareTag("Enemy"))
             {
-                m_Player.canAttack = false;
                 other.gameObject.GetComponent<EnemyController>().TakeDamage(m_Player.attackDamage);
+                m_Player.animator.SetBool("canAttack", false);
+                m_Player.canAttack = false;
             }
         }
     }

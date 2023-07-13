@@ -27,7 +27,7 @@ public class PlayerCombatController : MonoBehaviour
     [Header("Camera")]
     [SerializeField] private Camera cam;
 
-    private Animator animator;
+    public Animator animator;
     
     // Start is called before the first frame update
     void Awake()
@@ -37,7 +37,7 @@ public class PlayerCombatController : MonoBehaviour
         AssignInputs();
 
         attackDamage = 1;
-        canAttack = true;
+        // canAttack = true;
     }
 
     private void Start()

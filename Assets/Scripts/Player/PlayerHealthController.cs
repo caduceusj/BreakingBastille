@@ -45,7 +45,7 @@ public class PlayerHealthController : MonoBehaviour
         HealthPoints = 20;
 
         StartCoroutine(HealthLogic());
-        ReceiveDamage(20);
+        // ReceiveDamage(20);
     }
 
     private void Update()
@@ -93,6 +93,8 @@ public class PlayerHealthController : MonoBehaviour
 
     public void ReceiveDamage(int damage)
     {
+        CameraShake.Instance.ShakeCamera(20f, .8f);
+
         HealthPoints -= damage;
 
         if(SetRegenCoroutine != null) StopCoroutine("SetRegenCooldown");
