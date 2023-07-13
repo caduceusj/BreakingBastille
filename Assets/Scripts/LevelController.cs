@@ -72,7 +72,7 @@ public class LevelController : MonoBehaviour
         foreach (GameObject item in statues)
         {
             // Determining Pattern for Statues
-            generator = Random.Range(1, 3);
+            generator = Random.Range(1, 4);
             correctPositions.Add(generator);
 
             // Determining which StatuePartternSpawners will have a pattern

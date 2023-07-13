@@ -8,6 +8,7 @@ public class pressurePlateBehaviour : MonoBehaviour
     private Vector3 originalPos;
     private LevelController levelController;
     private bool trigger,block,moveBack;
+    [SerializeField]private List<GameObject> trapsAssociated;
     
     void Start()
     {
@@ -59,9 +60,15 @@ public class pressurePlateBehaviour : MonoBehaviour
         {
             if (levelController.checkStatues())
             {
-                block = true;
-                trigger = false;
+                block = true;               
             }
+            else
+            {
+                foreach (GameObject trap in trapsAssociated) {
+                    trap.transform.GetChild(0).GetComponent<TrapBehaviour>().shoot();                        
+                }
+            }
+            trigger = false;
         }
     }
 }
