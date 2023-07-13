@@ -93,6 +93,7 @@ public class PlayerHealthController : MonoBehaviour
 
     public void ReceiveDamage(int damage)
     {
+        Debug.Log("levei Dano");
         HealthPoints -= damage;
 
         if(SetRegenCoroutine != null) StopCoroutine("SetRegenCooldown");

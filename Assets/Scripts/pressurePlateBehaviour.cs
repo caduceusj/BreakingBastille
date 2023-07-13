@@ -19,7 +19,7 @@ public class pressurePlateBehaviour : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-    
+        //Debug.Log("Colisão Detectada");
         if (other.gameObject.CompareTag("Player") && block == false) {
             transform.parent = transform;
             trigger = true;

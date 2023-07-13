@@ -6,8 +6,9 @@ public class ProjectileController : MonoBehaviour
 {
     // Start is called before the first frame update
     private bool hit = false,hitPlayer = false,hitEnemy = false;
-    public bool isFromEnemy;
+    public bool isFromEnemy, moving,vertical;
     public int damage;
+    public float direction,velocity;
     private PlayerHealthController healthController;
 
     private void Start()
@@ -39,5 +40,25 @@ public class ProjectileController : MonoBehaviour
             }
             Destroy(gameObject);
         }
+        if (moving)
+        {
+            if (vertical)
+            {
+                //transform.Translate(Vector3.forward * direction * velocity * Time.deltaTime);
+                GetComponent<Rigidbody>().velocity = new Vector3(0f, direction, 0f) * velocity * Time.deltaTime;
+                //GetComponent<Rigidbody>().AddForce(new Vector3(0f, direction * velocity, 0f), ForceMode.Impulse);
+            }
+            else
+            {
+                //transform.Translate(Vector3.up * direction * velocity * Time.deltaTime);
+                GetComponent<Rigidbody>().velocity = new Vector3(direction, 0f, 0f) * velocity * Time.deltaTime;
+                //'GetComponent<Rigidbody>().AddForce(new Vector3(direction * velocity, 0f, 0f),ForceMode.Impulse);
+            }
+        }
+    }
+    private void FixedUpdate()
+    {
+        
+        
     }
 }
