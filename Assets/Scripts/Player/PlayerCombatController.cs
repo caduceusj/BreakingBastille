@@ -12,7 +12,7 @@ public class PlayerCombatController : MonoBehaviour
     [SerializeField] private float attackDistance = 3f;
     [SerializeField] private float attackDelay = 0.4f;
     [SerializeField] private float attackSpeed = 1f;
-    [SerializeField] private int attackDamage = 1;
+    [field: SerializeField] public int attackDamage { get; set; }
     [SerializeField] private LayerMask attackLayer;
 
     [SerializeField] private GameObject hitEffect;
@@ -20,6 +20,7 @@ public class PlayerCombatController : MonoBehaviour
     [SerializeField] private AudioClip hitSound;
 
     bool attacking = false;
+    public bool canAttack { get; set; }
     bool readyToAttack = true;
     int attackCount;
 
@@ -33,8 +34,10 @@ public class PlayerCombatController : MonoBehaviour
     {
         input = new InputStarterAssets();
         player = input.Player;
-
         AssignInputs();
+
+        attackDamage = 1;
+        canAttack = true;
     }
 
     private void Start()
@@ -45,11 +48,13 @@ public class PlayerCombatController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (input.Player.Attack.IsPressed())
+        if (animator.GetBool("canAttack"))
         {
-
+            canAttack = true;
+            // agent.speed = 3.5f;
         }
     }
+
 
     private void OnEnable()
     {
@@ -77,7 +82,7 @@ public class PlayerCombatController : MonoBehaviour
         Invoke(nameof(ResetAttack), attackSpeed);
         
         animator.SetTrigger("isAttacking");
-        Invoke(nameof(AttackRaycast), attackDelay);
+        // Invoke(nameof(AttackRaycast), attackDelay);
 
         if (attackCount == 0)
         {

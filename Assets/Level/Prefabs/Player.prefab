@@ -107,7 +107,6 @@ GameObject:
   - component: {fileID: 5540846699157827664}
   - component: {fileID: 8268927445466215194}
   - component: {fileID: 2447917064510381815}
-  - component: {fileID: 450024143962513945}
   m_Layer: 8
   m_Name: Capsule
   m_TagString: Player
@@ -197,30 +196,12 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &450024143962513945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5735108977435639729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 470447692f514c44c971a94268a5af53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <MaxHealthPoints>k__BackingField: 20
-  <HealthPoints>k__BackingField: 20
-  HealSpeed: 1
-  RegenCoooldown: 4
-  IsRegenInCooldown: 0
-  hit: 0
 --- !u!1 &5760401390933283079
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,9 +250,10 @@ GameObject:
   - component: {fileID: 6236168415928459749}
   - component: {fileID: 5829433383059841116}
   - component: {fileID: 6831309157998320037}
+  - component: {fileID: 5702361716669304892}
   m_Layer: 12
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -506,6 +488,24 @@ MonoBehaviour:
   swordSwing: {fileID: 0}
   hitSound: {fileID: 0}
   cam: {fileID: 0}
+--- !u!114 &5702361716669304892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6462617959016915566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 470447692f514c44c971a94268a5af53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MaxHealthPoints>k__BackingField: 20
+  <HealthPoints>k__BackingField: 20
+  HealSpeed: 1
+  RegenCoooldown: 4
+  IsRegenInCooldown: 0
+  hit: 0
 --- !u!1 &9034570621473568845
 GameObject:
   m_ObjectHideFlags: 0
