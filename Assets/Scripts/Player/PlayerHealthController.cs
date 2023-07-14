@@ -2,15 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
+using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerHealthController : MonoBehaviour
 {
+    public GameObject damagedLevel;
+
+    public UnityEngine.UI.Image damageControl;
     public static PlayerHealthController Instance { get; private set; }
 
     [field: Header("Health")]
-    [field: SerializeField] public int MaxHealthPoints {get; private set;}
-    [field: SerializeField] public int HealthPoints { get; private set; }
-    [SerializeField] private int HealSpeed = 1;
+    [field: SerializeField] public float MaxHealthPoints {get; private set;}
+    [field: SerializeField] public float HealthPoints { get; private set; }
+    [SerializeField] private float HealSpeed = 2f;
+
+    
 
     [Header("Cooldown")]
     [SerializeField] private float RegenCoooldown = 4f;
@@ -34,12 +42,12 @@ public class PlayerHealthController : MonoBehaviour
         {
             Instance = this;
         }
-        // DontDestroyOnLoad(gameObject);
+ //DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
-        HealDelay = new WaitForSeconds(0.5f);
+        HealDelay = new WaitForSeconds(2f);
         RegenCooldownDelay = new WaitForSeconds(RegenCoooldown);
 
         MaxHealthPoints = 20;
@@ -92,9 +100,16 @@ public class PlayerHealthController : MonoBehaviour
         return (float)HealthPoints / MaxHealthPoints;
     }
 
+    public void FixedUpdate()
+    {
+        damageControl = damagedLevel.GetComponent<UnityEngine.UI.Image>();
+
+        damageControl.color = new Color(damageControl.color.r, damageControl.color.g, damageControl.color.b, (MaxHealthPoints - HealthPoints) * 0.01f);
+    }
+
     public void ReceiveDamage(int damage)
     {
-        CameraShake.Instance.ShakeCamera(20f, .8f);
+        CameraShake.Instance.ShakeCamera(30f, 1.2f);
 
         HealthPoints -= damage;
 

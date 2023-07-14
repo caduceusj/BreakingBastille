@@ -15,11 +15,11 @@ EditorBuildSettings:
     path: Assets/Level/Scenes/2_Courtyard.unity
     guid: 5e9289aaff40a0c45bb45595868ca0f1
   - enabled: 1
-    path: Assets/Level/Scenes/Game Over.unity
-    guid: d7686da173f3c684a83ed42f24d03ab2
-  - enabled: 1
     path: Assets/Level/Scenes/GameWin.unity
     guid: 57d22fcb2f684cf4fab2b5995f1cd389
+  - enabled: 1
+    path: Assets/Level/Scenes/Game Over.unity
+    guid: d7686da173f3c684a83ed42f24d03ab2
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7,
       type: 2}
