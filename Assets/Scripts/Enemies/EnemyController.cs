@@ -7,6 +7,8 @@ public class EnemyController : MonoBehaviour
 {
     [SerializeField] private int currentHealth;
     [SerializeField] private int maxHealth;
+    [SerializeField] private ParticleSystem blood;
+    [SerializeField] private int bloodParticle;
     [field: SerializeField] public int damagePower { get; private set;  }
     
     [SerializeField] private Transform player;
@@ -107,7 +109,7 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
-
+        blood.Play();
         StartCoroutine(HitEffect());
 
         if (currentHealth <= 0)
