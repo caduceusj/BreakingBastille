@@ -10,15 +10,16 @@ public class PlayerHealthController : MonoBehaviour
 {
     public GameObject damagedLevel;
 
+    public ParticleSystem blood;
+
     public UnityEngine.UI.Image damageControl;
     public static PlayerHealthController Instance { get; private set; }
 
     [field: Header("Health")]
     [field: SerializeField] public float MaxHealthPoints {get; private set;}
     [field: SerializeField] public float HealthPoints { get; private set; }
-    [SerializeField] private float HealSpeed = 2f;
+    [SerializeField] private float HealSpeed = 0.1f;
 
-    
 
     [Header("Cooldown")]
     [SerializeField] private float RegenCoooldown = 4f;
@@ -47,7 +48,7 @@ public class PlayerHealthController : MonoBehaviour
 
     private void Start()
     {
-        HealDelay = new WaitForSeconds(2f);
+        HealDelay = new WaitForSeconds(0.01f);
         RegenCooldownDelay = new WaitForSeconds(RegenCoooldown);
 
         MaxHealthPoints = 20;
@@ -85,7 +86,7 @@ public class PlayerHealthController : MonoBehaviour
             
             if(HealthPoints < MaxHealthPoints)
             {
-                HealthPoints += HealSpeed;
+                HealthPoints += 0.01f;
                 yield return HealDelay;
             }
             else
@@ -110,6 +111,7 @@ public class PlayerHealthController : MonoBehaviour
     public void ReceiveDamage(int damage)
     {
         CameraShake.Instance.ShakeCamera(30f, 1.2f);
+        blood.Play();
 
         HealthPoints -= damage;
 
