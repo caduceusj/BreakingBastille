@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour
     public float FollowRange = 5;
 
     private Renderer render;
-    private NavMeshAgent agent;
+    public  NavMeshAgent agent;
     private Animator anim;
 
     private Color _Color;
@@ -51,9 +51,15 @@ public class EnemyController : MonoBehaviour
         if (anim.GetBool("canAttack"))
         {
             canAttack = true;
+            agent.isStopped = false;
             // agent.speed = 3.5f;
         }
+        else
+        {
+            agent.isStopped = true;
+        }
     }
+
 
     private void OnDrawGizmosSelected()
     {
@@ -63,7 +69,7 @@ public class EnemyController : MonoBehaviour
         // when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
         Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y, transform.position.z), FollowRange);
     }
-    private void trackPlayer()
+    public void trackPlayer()
     {
         bool playerInRange = Physics.CheckSphere(transform.position, FollowRange, playerLayer, QueryTriggerInteraction.Ignore);
 
@@ -96,7 +102,11 @@ public class EnemyController : MonoBehaviour
     {
         // anim.SetBool("canAttack", false);
         // agent.speed = 0;
+        
         anim.SetTrigger("isAttacking");
+
+       
+
     }
 
     private IEnumerator HitEffect()
