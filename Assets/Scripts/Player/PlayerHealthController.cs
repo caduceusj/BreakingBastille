@@ -48,7 +48,7 @@ public class PlayerHealthController : MonoBehaviour
 
     private void Start()
     {
-        HealDelay = new WaitForSeconds(0.01f);
+        HealDelay = new WaitForSeconds(1f);
         RegenCooldownDelay = new WaitForSeconds(RegenCoooldown);
 
         MaxHealthPoints = 20;
@@ -86,7 +86,7 @@ public class PlayerHealthController : MonoBehaviour
             
             if(HealthPoints < MaxHealthPoints)
             {
-                HealthPoints += 0.01f;
+                HealthPoints += 2f;
                 yield return HealDelay;
             }
             else

@@ -10,7 +10,7 @@ public class PlayerStaminaBarController : MonoBehaviour
     public GameObject player;
 
     [SerializeField] Image cooldownBar; // Reference to the UI bar image
-    [SerializeField] float fillSpeed = 0.5f; // Speed at which the UI bar fills
+    [SerializeField] float fillSpeed = 2f; // Speed at which the UI bar fills
     
     public void Start()
     {
@@ -19,7 +19,7 @@ public class PlayerStaminaBarController : MonoBehaviour
     public void UpdateCooldownUI()
     {
 
-        float cooldownProgress = playerDashScript.currentCooldown / playerDashScript.maxCooldown;
+        float cooldownProgress = 1f - (playerDashScript.currentCooldown / playerDashScript.maxCooldown);
 
         Debug.Log(playerDashScript.currentCooldown);
         Debug.Log(playerDashScript.maxCooldown);
