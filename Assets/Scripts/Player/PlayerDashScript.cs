@@ -42,7 +42,7 @@ public class PlayerDashScript : MonoBehaviour
         // Update the UI bar to reflect the cooldown progress
 
 
-        if (Input.GetKeyDown(KeyCode.Q)) {
+        if (Input.GetMouseButtonDown(1)) {
             StartCoroutine(Dash());
         }
 
