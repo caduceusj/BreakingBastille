@@ -13,7 +13,7 @@ public class PlayerDashScript : MonoBehaviour
     [SerializeField] Image cooldownBar; // Reference to the UI bar image
     [SerializeField] float fillSpeed = 2f; // Speed at which the UI bar fills
 
-    public float maxCooldown = 5f; // Set your desired cooldown time here
+    public float maxCooldown = 3f; // Set your desired cooldown time here
     public FirstPersonController firstPersonController;
     public PlayerStaminaBarController playerStaminaBarController;
     // Start is called before the first frame update
