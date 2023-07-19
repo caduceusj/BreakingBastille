@@ -39,7 +39,6 @@ public class LevelController : MonoBehaviour
         {
             Instance = this;
         }
-        DontDestroyOnLoad(gameObject);
     }
 
     void Start()
