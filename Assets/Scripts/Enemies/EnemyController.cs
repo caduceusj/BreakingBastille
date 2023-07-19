@@ -21,8 +21,7 @@ public class EnemyController : MonoBehaviour
     private Animator anim;
 
     private Color _Color;
-    private bool playerInRange = false;
-    private bool canFollow = true;
+    private bool isDying = false;
 
     public bool canAttack { get; set; }
 
@@ -45,18 +44,19 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        // if(!playerInRange) trackPlayer();
-        trackPlayer();
+        if(!isDying)
+        {
+            trackPlayer();
 
-        if (anim.GetBool("canAttack"))
-        {
-            canAttack = true;
-            agent.isStopped = false;
-            // agent.speed = 3.5f;
-        }
-        else
-        {
-            agent.isStopped = true;
+            if (anim.GetBool("canAttack"))
+            {
+                canAttack = true;
+                agent.isStopped = false;
+            }
+            else
+            {
+                agent.isStopped = true;
+            }
         }
     }
 
@@ -100,13 +100,7 @@ public class EnemyController : MonoBehaviour
 
     private void attack()
     {
-        // anim.SetBool("canAttack", false);
-        // agent.speed = 0;
-        
         anim.SetTrigger("isAttacking");
-
-       
-
     }
 
     private IEnumerator HitEffect()
@@ -126,10 +120,17 @@ public class EnemyController : MonoBehaviour
         { Death(); }
     }
 
+    private IEnumerator WaitForDeathAnimation()
+    {
+        agent.destination = transform.position;
+        anim.SetTrigger("isDying");
+        yield return new WaitForSeconds(2.6f);
+        Destroy(gameObject);
+    }
+
     void Death()
     {
-        // Death function
-        // TEMPORARY: Destroy Object
-        Destroy(gameObject);
+        isDying = true;
+        StartCoroutine(WaitForDeathAnimation());
     }
 }
