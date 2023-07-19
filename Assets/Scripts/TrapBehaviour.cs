@@ -4,32 +4,20 @@ using UnityEngine;
 
 public class TrapBehaviour : MonoBehaviour
 {
-    [SerializeField] private GameObject projectile,firePoint;
-    [SerializeField] private bool vertical;
+    [SerializeField] private GameObject projectile;
+    [SerializeField] private GameObject firePoint;
     [SerializeField] private float velocity;
     [SerializeField] private int damage;
+
     private GameObject newProjectile;
     private ProjectileController projectileController;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void shoot()
     {
         newProjectile = Instantiate(projectile,firePoint.transform.position,firePoint.transform.rotation);
+        
         projectileController = newProjectile.GetComponent<ProjectileController>();
-
-        projectileController.moving = true;
-        projectileController.isFromEnemy = true;
         projectileController.damage = damage;
         projectileController.velocity = Mathf.Abs(velocity);
-        projectileController.vertical = vertical;        
     }
 }
