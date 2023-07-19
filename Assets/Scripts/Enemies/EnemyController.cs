@@ -112,12 +112,14 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        currentHealth -= amount;
-        blood.Play();
-        StartCoroutine(HitEffect());
+        if(!isDying)
+        {
+            currentHealth -= amount;
+            blood.Play();
+            StartCoroutine(HitEffect());
 
-        if (currentHealth <= 0)
-        { Death(); }
+            if (currentHealth <= 0) Death();
+        }
     }
 
     private IEnumerator WaitForDeathAnimation()
