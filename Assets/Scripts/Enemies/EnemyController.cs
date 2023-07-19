@@ -22,6 +22,7 @@ public class EnemyController : MonoBehaviour
 
     private Color _Color;
     private bool isDying = false;
+    private bool firstCheck = true;
 
     public bool canAttack { get; set; }
 
@@ -77,14 +78,23 @@ public class EnemyController : MonoBehaviour
         {
             transform.LookAt(new Vector3(player.position.x, this.transform.position.y, player.position.z));
             agent.destination = player.position;
-            if (agent.remainingDistance > agent.stoppingDistance)
+            
+            print($"remainingDistance: {agent.remainingDistance}");
+            print($"stoppingDistance: {agent.stoppingDistance}");
+            // Debug.Break();
+            if (agent.remainingDistance > agent.stoppingDistance || firstCheck)
             {
+                firstCheck = false;
                 anim.SetFloat("speed", .66f, .2f, Time.deltaTime);
             }
             else
             {
                 anim.SetFloat("speed", 1, .2f, Time.deltaTime);
-                attack();
+
+
+                if (Vector3.Dot(transform.forward, (player.position - transform.position).normalized) > 0.9f) { 
+                    attack();
+                }
             }
         }
         else
