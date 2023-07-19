@@ -7,9 +7,6 @@ public class HealthBarController : MonoBehaviour
 {
     private Image healthBar;
 
-
-    public float fillSpeed = 3f, healthPercent;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -19,10 +16,6 @@ public class HealthBarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthPercent = PlayerHealthController.Instance.GetHealthPercentage();
-
-
-
-        healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, healthPercent, Time.deltaTime * fillSpeed);
+        healthBar.fillAmount = PlayerHealthController.Instance.GetHealthPercentage();
     }
 }

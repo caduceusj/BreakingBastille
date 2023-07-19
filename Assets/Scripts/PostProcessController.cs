@@ -34,7 +34,7 @@ public class PostProcessController : MonoBehaviour
     {
         if(vignetteEffect != null)
         {
-            // print($"mode: {vignetteEffect.mode.value}");
+            print($"mode: {vignetteEffect.mode.value}");
         }
     }
 }

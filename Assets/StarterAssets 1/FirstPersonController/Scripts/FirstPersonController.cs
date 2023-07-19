@@ -11,8 +11,7 @@ namespace StarterAssets
 #endif
 	public class FirstPersonController : MonoBehaviour
 	{
-		public Vector3 inputDirection;
-        [Header("Player")]
+		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
 		public float MoveSpeed = 4.0f;
 		[Tooltip("Sprint speed of the character in m/s")]
@@ -70,8 +69,8 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM
 		private PlayerInput _playerInput;
 #endif
-		public CharacterController _controller;
-		public StarterAssetsInputs _input;
+		private CharacterController _controller;
+		private StarterAssetsInputs _input;
 		private GameObject _mainCamera;
         private Animator _animator;
 

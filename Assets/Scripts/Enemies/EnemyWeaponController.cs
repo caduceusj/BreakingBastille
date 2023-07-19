@@ -16,9 +16,6 @@ public class EnemyWeaponController : MonoBehaviour
                 print("Atacou: " + other.name);
                 m_Enemy.canAttack = false;
                 other.gameObject.GetComponent<PlayerHealthController>().ReceiveDamage(m_Enemy.damagePower);
-                m_Enemy.agent.isStopped = false;
-                
-                m_Enemy.trackPlayer();
             }
         }
     }
