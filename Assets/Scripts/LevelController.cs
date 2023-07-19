@@ -47,6 +47,9 @@ public class LevelController : MonoBehaviour
         patternsSpawners = new List<GameObject> ();
         correctPositions = new List<int>();
         loadMap();
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void loadMap()

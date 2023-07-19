@@ -12,6 +12,8 @@ public class GameWinSceneController : MonoBehaviour
     {
         ExitButton.onClick.AddListener(ExitGame);
         Menu.onClick.AddListener(ChangeSceneMenu);
+        
+        Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
 

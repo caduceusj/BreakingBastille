@@ -23,7 +23,9 @@ public class MenuandIntroScript : MonoBehaviour
         continueButton.interactable = false;
         startGameButton.onClick.AddListener(playButtonClicked);
         exitGameButton.onClick.AddListener (ExitGame);
-        
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void ExitGame()

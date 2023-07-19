@@ -12,6 +12,8 @@ public class GameOverSceneControllerMy : MonoBehaviour
     {
         RestarButton.onClick.AddListener(ChangeScene);
         Menu.onClick.AddListener(ChangeSceneMenu);
+
+        Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
 
