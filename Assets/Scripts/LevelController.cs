@@ -93,11 +93,13 @@ public class LevelController : MonoBehaviour
     }
     public bool checkStatues()
     {
+
         int i = 0;
         bool sequenceCorrect = true;
         foreach(GameObject statue in statues) {            
-            if(statue.GetComponent<StatueController>().position != correctPositions[i++])
+            if(statue.GetComponent<StatueController>().realPosition != correctPositions[i++])
             {
+                print("true");
                 sequenceCorrect = false;                
             }
         }

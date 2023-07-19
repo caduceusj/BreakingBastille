@@ -8,7 +8,7 @@ public class PlayerSwordController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("Atacou: " + other.name);
+        // print("Atacou: " + other.name);
         if (m_Player.canAttack)
         {
             if (other.CompareTag("Enemy"))
