@@ -50,7 +50,7 @@ public class AN_Button : MonoBehaviour
     {
         if (!Locked)
         {
-            if (Input.GetKeyDown(KeyCode.E) && !isValve && DoorObject != null && DoorObject.Remote && NearView()) // 1.lever and 2.button
+            if (Input.GetKeyDown(KeyCode.F) && !isValve && DoorObject != null && DoorObject.Remote && NearView()) // 1.lever and 2.button
             {
                 DoorObject.Action(); // void in door script to open/close
                 if (isLever) // animations
@@ -63,7 +63,7 @@ public class AN_Button : MonoBehaviour
             else if (isValve && RampObject != null) // 3.valve
             {
                 // changing value in script
-                if (Input.GetKey(KeyCode.E) && NearView())
+                if (Input.GetKey(KeyCode.F) && NearView())
                 {
                     if (valveBool)
                     {
